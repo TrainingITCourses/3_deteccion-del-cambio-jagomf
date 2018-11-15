@@ -1,8 +1,13 @@
-<h1>Angular Speed: aplicaciones de alto rendimiento</h1>
+<h1>Space</h1>
 
-<router-outlet></router-outlet>
-
-<footer>
-  <a href="https://trainingit.es/">Training IT</a>
-  <small>A course By <a href="https://twitter.com/albertobasalo">Alberto Basalo</a></small>
-</footer>
+<div>
+  <div>
+    <app-select-criteria (changedCriteria)="setCriteria($event)"></app-select-criteria>
+  </div>
+  <div>Criterio seleccionado: {{criteria}}</div>
+    <app-select-value [options]="valuesHolder$ | async" (valueChosen)="setValue($event)"></app-select-value>
+  <div>Valor seleccionado: {{value?.name}}</div>
+  <div>
+    <app-missions-viewer [sources]="missionsHolder$ | async" [criteria]="criteria" [value]="value?.id"></app-missions-viewer>
+  </div>
+</div>
