@@ -1,13 +1,17 @@
 <h1>Space</h1>
 
-<div>
-  <div>
+<section>
+  <div class="sel-criteria selector-area">
     <app-select-criteria (changedCriteria)="setCriteria($event)"></app-select-criteria>
+    <div>Criterio seleccionado: {{criteria}}</div>
   </div>
-  <div>Criterio seleccionado: {{criteria}}</div>
+  <hr/>
+  <div class="sel-value selector-area">
     <app-select-value [options]="valuesHolder$ | async" (valueChosen)="setValue($event)"></app-select-value>
-  <div>Valor seleccionado: {{value?.name}}</div>
-  <div>
-    <app-missions-viewer [sources]="missionsHolder$ | async" [criteria]="criteria" [value]="value?.id"></app-missions-viewer>
+    <div>Valor seleccionado: {{value?.name}}</div>
   </div>
-</div>
+  <hr/>
+  <div class="filtered-missions results-area">
+    <app-missions-viewer [sources]="missionsHolder$ | async" [criteria]="criteria" [value]="value"></app-missions-viewer>
+  </div>
+</section>

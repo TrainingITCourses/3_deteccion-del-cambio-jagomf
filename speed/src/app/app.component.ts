@@ -36,6 +36,6 @@ export class AppComponent implements OnInit {
   }
 
   setValue(value) {
-    this.value = value;
+    this.value = { ...value };
   }
 }
